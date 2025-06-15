@@ -1,1 +1,379 @@
-<H1 style="color:rgb(0, 10, 71);">This is a personal webpage for Economictrick</H1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Webpage - GitHub Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        .sidebar {
+            min-width: 300px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .filter-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #e6edf3;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #1f6feb;
+            box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.1);
+        }
+
+        .search-box::placeholder {
+            color: #7d8590;
+        }
+
+        .tab-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .tab-item {
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            color: #e6edf3;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-item:hover {
+            background: #21262d;
+            border-color: #30363d;
+        }
+
+        .tab-item.active {
+            background: #1f6feb;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .tab-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+
+        .content-area {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            min-height: 400px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section h2 {
+            color: #f0f6fc;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            color: #8b949e;
+            margin-bottom: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: #1f6feb;
+        }
+
+        .project-title {
+            color: #58a6ff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            color: #8b949e;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                min-width: unset;
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="main-content">
+                <h1>This is a personal webpage</h1>
+            </div>
+            
+            <div class="sidebar">
+                <div class="filter-section">
+                    <div class="filter-title">Search</div>
+                    <input type="text" class="search-box" placeholder="Search content..." id="searchInput">
+                </div>
+                
+                <div class="filter-section">
+                    <div class="filter-title">Filter by Category</div>
+                    <ul class="tab-list">
+                        <li class="tab-item active" data-tab="projects">
+                            <svg class="tab-icon" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 0 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 0 1 1-1h8zM5 12.25v3.25a.25.25 0 0 0 .4.2l1.45-1.087a.25.25 0 0 1 .3 0L8.6 15.7a.25.25 0 0 0 .4-.2v-3.25a.25.25 0 0 0-.25-.25h-3.5a.25.25 0 0 0-.25.25z"/>
+                            </svg>
+                            Personal Projects
+                        </li>
+                        <li class="tab-item" data-tab="opinions">
+                            <svg class="tab-icon" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zm2.97-4.97a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                            </svg>
+                            Opinions
+                        </li>
+                        <li class="tab-item" data-tab="interests">
+                            <svg class="tab-icon" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/>
+                            </svg>
+                            Other Interests
+                        </li>
+                        <li class="tab-item" data-tab="notes">
+                            <svg class="tab-icon" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25a1.75 1.75 0 0 1 .445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.25.25 0 0 0-.064.108l-.558 1.953 1.953-.558a.249.249 0 0 0 .108-.064l6.286-6.286Z"/>
+                            </svg>
+                            Notes
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="content-section active" id="projects">
+                <h2>Personal Projects</h2>
+                <p>Here are some of my personal projects and coding experiments.</p>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-title">Project Alpha</div>
+                        <div class="project-desc">A web application built with modern technologies</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Data Visualizer</div>
+                        <div class="project-desc">Interactive charts and graphs for data analysis</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">API Wrapper</div>
+                        <div class="project-desc">Simplified interface for external APIs</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="opinions">
+                <h2>Opinions</h2>
+                <p>My thoughts and perspectives on various topics in technology, design, and life.</p>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-title">On Modern Web Development</div>
+                        <div class="project-desc">The evolution of web technologies and best practices</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Design Philosophy</div>
+                        <div class="project-desc">Thoughts on user experience and interface design</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="interests">
+                <h2>Other Interests</h2>
+                <p>Beyond coding, here are some other areas that capture my curiosity.</p>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-title">Photography</div>
+                        <div class="project-desc">Capturing moments and exploring visual storytelling</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Music Production</div>
+                        <div class="project-desc">Creating electronic music and sound design</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Reading</div>
+                        <div class="project-desc">Science fiction, philosophy, and technical literature</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="notes">
+                <h2>Notes</h2>
+                <p>Quick thoughts, code snippets, and learning notes.</p>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-title">JavaScript Tips</div>
+                        <div class="project-desc">Useful patterns and best practices</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Learning Log</div>
+                        <div class="project-desc">Daily discoveries and insights</div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Code Snippets</div>
+                        <div class="project-desc">Reusable functions and utilities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const tabItems = document.querySelectorAll('.tab-item');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        tabItems.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and sections
+                tabItems.forEach(t => t.classList.remove('active'));
+                contentSections.forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content section
+                const targetTab = tab.getAttribute('data-tab');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = e.target.value.toLowerCase();
+                const projectCards = document.querySelectorAll('.project-card');
+                
+                projectCards.forEach(card => {
+                    const title = card.querySelector('.project-title').textContent.toLowerCase();
+                    const desc = card.querySelector('.project-desc').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || desc.includes(searchTerm) || searchTerm === '') {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }, 300);
+        });
+
+        // Add some hover effects and animations
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'transform 0.2s ease';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
